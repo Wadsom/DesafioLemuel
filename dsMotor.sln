@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dsMotor", "dsMotor\dsMotor.csproj", "{8AFCBE15-6D1E-4D04-B3FF-7EAD0D5FA637}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dsMotor.Domain", "dsMotor\dsMotor.Domain.csproj", "{8AFCBE15-6D1E-4D04-B3FF-7EAD0D5FA637}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
