@@ -1,37 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dsMotor.Domain.Entities;
+﻿using dsMotor.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace dsMotor.Infra.Persistence
 {
-    public class DsMotorDbContext
+    public class DsMotorDbContext:DbContext
     {
-        List<Motorcycle> Motorcycles = new List<Motorcycle>();
-        List<User> Users = new List<User>();
+        public DbSet<Motorcycle> Motorcycle { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        public DsMotorDbContext()
+        public DsMotorDbContext(DbContextOptions<DsMotorDbContext> options) : base(options)
         {
-            Motorcycles = new List<Motorcycle>()
-            {
-                new Motorcycle("Shineray", 2024,"KOSDAWF","Preta"),
-                new Motorcycle("Honda", 2021,"K34D6WF","Preta"),
-                new Motorcycle("Kawazaki",2014,"KCMVBFF","Vermelha"),
-                new Motorcycle("Harley", 1980,"FVXSAG","Verde"),     
-                new Motorcycle("Yamaha", 1995, "YAM1234", "Azul"),
-                new Motorcycle("Kawasaki", 2005, "KAW5678", "Preto"),
-                new Motorcycle("Ducati", 2010, "DUC9101", "Vermelho"),
-                new Motorcycle("Honda", 2020, "HON2345", "Branco")
-            };
-            Users = new List<User>()
-            {
-                new User("Bob", "Bob@gmail.com", "123456"),
-                new User("Dave", "Dave@gmail.com", "654321"),
-                new User("Marley", "Marley@gmail.com", "789321"),
-                new User("John", "John@gmail.com", "123789"),
-            };
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Motorcycle>()
+                .HasKey(i => i.Id);
+            modelBuilder.Entity<User>()
+                .HasKey(i => i.Id);
+
         }
     }
 }
